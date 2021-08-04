@@ -3,6 +3,7 @@
  *
  * 1. Hoisting: The action of javascript to put functions and variables
  * declaration to the top of its block (ONLY the declaration, NOT the assignment)
+ * in runtime ONLY
  */
 
 function fn() {
