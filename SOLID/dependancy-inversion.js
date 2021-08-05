@@ -38,3 +38,22 @@ class CloudData {
     // write to external cloud
   }
 }
+
+class DataProcessor {
+  constructor(type) {
+    this.type = type;
+  }
+  save() {
+    this.type.save();
+  }
+}
+
+//Here is the high level module
+//We decouple the Data class from the FileSystem and CloudDatabase class
+
+class Data {
+  save(type) {
+    dataProcessor = new DataProcessor(type);
+    dataProcessor.save();
+  }
+}

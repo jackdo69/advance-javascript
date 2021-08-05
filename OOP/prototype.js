@@ -100,3 +100,42 @@ console.log(ben);
 
 const lily = Object.create(Cat.prototype);
 lily.run();
+
+/**
+ * Final notes
+ * The differences between put function inside constructor
+ * and put function in prototype
+ */
+
+function Cat(name) {
+  this.name = name;
+  this.sleep = function () {
+    console.log("...sleeping..");
+  };
+}
+
+Cat.prototype.sing = function () {
+  console.log("...singing....");
+};
+
+/**
+ * 1. Whenever a Cat is created, the sleep() function is redefined, which is not optimized
+ * 2. If we will function contructor again, that child will have sleep() but not sing()
+ */
+
+function WildCat(name) {
+  Cat.call(this, name);
+}
+
+function Lion(name) {
+  WildCat.call(this, name);
+}
+WildCat.prototype = Object.create(Cat.prototype); //without this line, boba will not able to sing()
+Lion.prototype = Object.create(WildCat.prototype);
+
+const simba = new Lion("simba");
+const boba = new WildCat("boba");
+boba.sing();
+console.log(simba);
+simba.sleep();
+simba.sing();
