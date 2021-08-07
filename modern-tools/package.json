@@ -1,0 +1,29 @@
+{
+  "name": "modern-tools",
+  "version": "1.0.0",
+  "description": "With the growth of Javascript programs, many other tools are developed to help making javascript application faster, cleaner, compatiple with older version of javascript (since we using ES6/Ecmascript2015 or newer). All those tools come together as a 'bundle'. We will have a taste of few popular one in this folder by building a simple NodeJS backend application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/server",
+    "build": "rimraf dist/ && babel src/ --out-dir dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "babel-cli": "^6.26.0",
+    "nodemon": "^2.0.12",
+    "rimraf": "^3.0.2"
+  }
+}
