@@ -1,18 +1,21 @@
-import app from "../app";
-import http from "http";
+/* eslint-disable no-console */
+/* eslint-disable no-use-before-define */
+import http from 'http';
+import app from '../app';
 
-const port = normalizePort(process.env.PORT || "3000");
-app.set("port", port);
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 const server = http.createServer(app);
 server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
+server.on('error', onError);
+server.on('listening', onListening);
 
 function normalizePort(val) {
+  // eslint-disable-next-line no-shadow
   const port = parseInt(val, 10);
 
-  if (isNaN(port)) {
+  if (Number.isNaN(port)) {
     // named pipe
     return val;
   }
@@ -26,20 +29,20 @@ function normalizePort(val) {
 }
 
 function onError(error) {
-  if (error.syscall !== "listen") {
+  if (error.syscall !== 'listen') {
     throw error;
   }
 
-  const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges");
+    case 'EACCES':
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use");
+    case 'EADDRINUSE':
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -49,6 +52,6 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-  console.log("Listening on " + bind);
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
+  console.log(`Listening on ${bind}`);
 }

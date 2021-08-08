@@ -1,15 +1,15 @@
-import express from "express";
-import User from "../controllers/user";
+import express from 'express';
+import User from '../controllers/user';
 
 const userController = new User();
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
+router.get('/', (req, res) => {
   const data = userController.getAll();
   res.send(data);
 });
 
-router.get("/:id", function (req, res, next) {
+router.get('/:id', (req, res) => {
   const { id } = req.params;
   const data = userController.getById(id);
   res.send(data);

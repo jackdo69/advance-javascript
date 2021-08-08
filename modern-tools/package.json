@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node src/server",
     "build": "rimraf dist/ && babel src/ --out-dir dist/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint --fix .",
+    "test": "nyc --reporter=lcov mocha --require @babel/register"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,16 @@
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@babel/preset-env": "^7.15.0",
-    "babel-cli": "^6.26.0",
+    "@babel/register": "^7.14.5",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "chai-things": "^0.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "mocha": "^9.0.3",
     "nodemon": "^2.0.12",
+    "nyc": "^15.1.0",
     "rimraf": "^3.0.2"
   }
 }

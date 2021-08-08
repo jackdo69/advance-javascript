@@ -1,4 +1,4 @@
-const userData = require("../../user.json");
+const userData = require('../../user.json');
 
 class User {
   constructor() {
@@ -10,7 +10,7 @@ class User {
   }
 
   getById(id) {
-    const user = this.userData.find((u) => u.id == id);
+    const user = this.userData.find((u) => u.id === parseInt(id, 10));
     return user;
   }
 }
