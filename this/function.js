@@ -6,25 +6,25 @@
  */
 
 function fn() {
-  console.log("Inside function");
+  console.log('Inside function');
   console.log(this);
 }
 
 const obj = {
   do() {
-    console.log("Inside object");
+    console.log('Inside object');
     console.log(this);
     fn();
   },
 };
 
-// fn();
-console.log("**************************");
-// obj.do();
+fn();
+console.log('**************************');
+obj.do();
 
 const obj2 = {
   foo() {
-    console.log("Foo function called");
+    console.log('Foo function called');
   },
   baz1() {
     setTimeout(function () {
@@ -52,4 +52,7 @@ const obj2 = {
  * setTimeout() was declared in Global object, so this inside it belong to the global object
  * in baz2, we have to appoint the ref of 'this' in outside function to 'self' so we can access it
  * in baz3, arrow function always apply this the same as the environment around it (lexical scope)
+ *
+ * In other words, with normal function(), this refer to the function expression (how it was declared)
+ * in Arrow function, this refer to how that function was called
  */

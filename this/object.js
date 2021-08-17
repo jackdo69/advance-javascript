@@ -3,23 +3,27 @@
  */
 
 const bob = {
-  name: "Bob Marley",
+  name: 'Bob Marley',
   age: 25,
   sleep() {
     //writing like this or using function like below is exactly the same
-    console.log("sleeping...");
+    console.log('sleeping...');
   },
   greeting: function () {
-    console.log("Hi there, would like some music!");
+    console.log('Hi there, would like some music!');
   },
   introduce: function () {
     console.log(`Hello, my name is ${this.name}`);
+  },
+  showWindow: () => {
+    console.log(this);
   },
 };
 
 console.log(bob);
 bob.sleep();
 bob.introduce(); // Hello, my name is Bob Marley
+bob.showWindow();
 
 /**
  * It's obvious in this example, but 'this' keyword becomes useful
@@ -30,7 +34,10 @@ bob.introduce(); // Hello, my name is Bob Marley
 /** create object using constructor function */
 function Animal(type) {
   this.type = type;
+  console.log('This inside Animal when call new', this);
 }
+const abe = new Animal(); //this refered to object created by Animal()
+Animal(); // this referred back to the Window object
 
 /** create object using class */
 
