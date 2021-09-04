@@ -10,3 +10,8 @@ Account.prototype.deposit = function(amount) {
 function baz() {
   console.log('Baz function')
 }
+
+// Feature1 code
+function foo() {
+  console.log('Foo function')
+}
