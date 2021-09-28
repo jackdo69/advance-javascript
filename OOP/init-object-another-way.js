@@ -50,10 +50,10 @@ const ben = new Teacher({
     this.age = 35;
     this.update((teacher) => {
       teacher.hobby = 'Fishing';
-      teacher.exercise = (type) => {
-        console.log(`Working out ${type}`);
-      };
     });
+  },
+  exercise(type) {
+    console.log(`Working out ${type}`);
   },
 });
 
