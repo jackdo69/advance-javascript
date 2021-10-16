@@ -1,4 +1,18 @@
-//Merge 2 sorted arrays
+/**
+ * Idea: Split input array recursively
+ * until we reach array with length of 1
+ * merge array that already sorted
+ * This sorting method exploits the fact that
+ * array of length 1 is ALWAYS sorted
+ * Time complexity: O(nlogn)
+ * logn is the time to split an array length n into multiple arrays of length 1
+ * n is the number of comparision need to merge 2 sorted array
+ */
+
+//Note: this function only works when 2 input arrays are sorted
+
+const data = require('./data.json');
+
 function mergeSortedArray(arr1, arr2) {
   let result = [];
   let i = 0;
@@ -31,3 +45,5 @@ function mergeSort(arr) {
   let last = arr.slice(middle, arr.length);
   return mergeSortedArray(mergeSort(first), mergeSort(last));
 }
+
+console.log(mergeSort(data));
