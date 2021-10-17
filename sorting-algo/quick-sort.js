@@ -7,6 +7,7 @@
  * swap the pivot with the count
  * once swap, we do recursively the process
  * with array on the start and on the end
+ * Time complexity: O(nlogn)
  */
 
 const swap = require('./swap');
