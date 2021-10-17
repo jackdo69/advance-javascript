@@ -1,4 +1,3 @@
-const swapArrayItem = require('./swap');
 const data = require('./data.json');
 /**
  * The concept is we start with the sorted portion
