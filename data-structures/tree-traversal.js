@@ -9,21 +9,29 @@
 const BinarySearchTree = require('./binary-search-tree');
 
 const tree = new BinarySearchTree();
-tree.insert(12);
-tree.insert(3);
-tree.insert(7);
-tree.insert(24);
-tree.insert(17);
-tree.insert(1);
-tree.insert(35);
+tree.insert(97);
+tree.insert(87);
+tree.insert(103);
+tree.insert(73);
+tree.insert(51);
+tree.insert(112);
+tree.insert(91);
+tree.insert(178);
+tree.insert(110);
+tree.insert(90);
+tree.insert(92);
 
 // The tree we form will look like
-//          12
-//        /    \
-//       3       24
-//     /   \    /  \
-//    1     7  17   35
-//
+//                 97
+//               /    \
+//             /        \
+//           87          103
+//          /   \            \
+//        /       \            \
+//      73         91            112
+//    /           /  \          /   \
+//   /           /     \       /     \
+// 51          90       92   110       178
 
 function breadFirstSearch(root) {
   const queue = [];
@@ -38,4 +46,37 @@ function breadFirstSearch(root) {
   return results;
 }
 
-console.log(breadFirstSearch(tree.root));
+function depthFirstPreOrder(root) {
+  const valuesVisited = [];
+  function helper(node) {
+    valuesVisited.push(node.val);
+    if (node.left) helper(node.left);
+    if (node.right) helper(node.right);
+  }
+  helper(root);
+  return valuesVisited;
+}
+
+function depthFirstPostOrder(root) {
+  const valuesVisited = [];
+  function helper(node) {
+    if (node.left) helper(node.left);
+    if (node.right) helper(node.right);
+    valuesVisited.push(node.val);
+  }
+  helper(root);
+  return valuesVisited;
+}
+
+function depthFirstInOrder(root) {
+  const valuesVisited = [];
+  function helper(node) {
+    if (node.left) helper(node.left);
+    valuesVisited.push(node.val);
+    if (node.right) helper(node.right);
+  }
+  helper(root);
+  return valuesVisited;
+}
+
+console.log(depthFirstPostOrder(tree.root));
