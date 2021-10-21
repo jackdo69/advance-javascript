@@ -35,23 +35,70 @@ class MaxBinaryHeap {
     this.values[i] = this.values[j];
     this.values[j] = temp;
   }
+
+  //Given a value and an index, it will keep moving up until
+  //that value stand in correct spot
+  bubleUp(val, index) {
+    let parentIndex = Math.floor((index - 1) / 2);
+    if (this.values[parentIndex] < this.values[index]) {
+      if (parentIndex <= 0) {
+        this.swap(0, index);
+        return;
+      }
+      this.swap(parentIndex, index);
+      this.bubleUp(val, parentIndex);
+    }
+    if (this.values[parentIndex] > this.values[index]) return;
+  }
+
+  //given a value and an index, it will keep moving down
+  //until that value stand in the right spot
+  sinkDown(val, index) {
+    let leftChildIndex = 2 * index + 1;
+    let rightChildIndex = 2 * index + 2;
+    if (leftChildIndex > this.values.length - 1) return;
+    if (rightChildIndex === this.values.length - 1) {
+      if (val < this.values[rightChildIndex]) {
+        this.swap(index, rightChildIndex);
+        return;
+      }
+      return;
+    }
+    let leftChild = this.values[leftChildIndex];
+    let rightChild = this.values[rightChildIndex];
+    switch (true) {
+      case leftChild > val && rightChild > val:
+        let largest = Math.max(leftChild, rightChild);
+        let largestIndex = this.values.indexOf(largest);
+        this.swap(index, largestIndex);
+        return this.sinkDown(val, largestIndex);
+
+      case rightChild > val:
+        this.swap(index, rightChildIndex);
+        return this.sinkDown(val, rightChildIndex);
+
+      case leftChild > val:
+        this.swap(index, leftChildIndex);
+        return this.sinkDown(val, leftChildIndex);
+
+      default:
+        return;
+    }
+  }
+
   insert(value) {
     if (this.values.indexOf(value) !== -1) return;
     this.values.push(value);
     let index = this.values.length - 1;
-    function helper(val, index, _this) {
-      let parentIndex = Math.floor((index - 1) / 2);
-      if (_this.values[parentIndex] < _this.values[index]) {
-        if (parentIndex <= 0) {
-          _this.swap(0, index);
-          return;
-        }
-        _this.swap(parentIndex, index);
-        helper(val, parentIndex, _this);
-      }
-      if (_this.values[parentIndex] > _this.values[index]) return;
-    }
-    helper(value, index, this);
+    this.bubleUp(value, index);
+  }
+
+  //Extract max in MaxBinaryHeap
+  removeRoot() {
+    this.swap(0, this.values.length - 1);
+    let oldRoot = this.values.pop();
+    this.sinkDown(this.values[0], 0);
+    return oldRoot;
   }
 }
 
@@ -63,4 +110,7 @@ heap.insert(18);
 heap.insert(27);
 heap.insert(12);
 heap.insert(55);
+heap.removeRoot();
+heap.removeRoot();
+
 heap.print();
