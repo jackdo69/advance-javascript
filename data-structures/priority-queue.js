@@ -19,7 +19,7 @@ class PriorityQueue {
   constructor() {
     this.values = [];
   }
-  enqueue(priority, val) {
+  enqueue(val, priority) {
     let newNode = new Node(val, priority);
     this.values.push(newNode);
     this.bubbleUp();
@@ -84,13 +84,15 @@ class Node {
     this.priority = priority;
   }
 }
-const queue = new PriorityQueue();
-queue.enqueue(5, 'Alex');
-queue.enqueue(1, 'James');
-queue.enqueue(4, 'Bella');
-queue.enqueue(2, 'Jessie');
-queue.enqueue(3, 'Tom');
+// const queue = new PriorityQueue();
+// queue.enqueue('Alex', 5);
+// queue.enqueue('James', 1);
+// queue.enqueue('Bella', 4);
+// queue.enqueue('Jessie', 2);
+// queue.enqueue('Tom', 3);
 
-console.log(queue.dequeue());
-console.log(queue.dequeue());
-console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+
+module.exports = PriorityQueue;
