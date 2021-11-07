@@ -1,4 +1,8 @@
-function Observer(name) {
+interface observerI {
+  name: string;
+  update: () => void;
+}
+function Observer(name: string) {
   this.name = name;
   this.update = function () {
     console.log(`${this.name} was notified!`);
@@ -7,10 +11,10 @@ function Observer(name) {
 
 function ObserverList() {
   this.list = [];
-  this.addObserver = function (ob) {
+  this.addObserver = function (ob: observerI) {
     this.list.push(ob);
   };
-  this.removeObserver = function (ob) {
+  this.removeObserver = function (ob: observerI) {
     for (let i = 0; i < this.list.length; i++) {
       if (ob.name === this.list[i].name) {
         this.list.splice(i, 1);
@@ -26,23 +30,23 @@ function ObserverList() {
 
 function Subject() {
   this.observerList = new ObserverList();
-  this.addObserver = function (...args) {
+  this.addObserver = function (...args: Array<observerI>) {
     for (let i = 0; i < args.length; i++) {
       this.observerList.addObserver(args[i]);
     }
   };
-  this.removeObserver = function (ob) {
+  this.removeObserver = function (ob: observerI) {
     this.observerList.removeObserver(ob);
   };
   this.changes = function () {
-    console.log("Subject is changing!!");
+    console.log('Subject is changing!!');
     this.observerList.notifyObservers();
   };
 }
 
-const ob1 = new Observer("alex");
-const ob2 = new Observer("jessica");
-const ob3 = new Observer("billy");
+const ob1 = new Observer('alex');
+const ob2 = new Observer('jessica');
+const ob3 = new Observer('billy');
 const subject = new Subject();
 subject.addObserver(ob1, ob2, ob3);
 subject.changes();

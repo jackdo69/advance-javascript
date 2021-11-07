@@ -15,7 +15,11 @@ const BankAccount = (function () {
     access: 0,
   };
 
-  function transferBetweenAccount(amount, fromAccount, toAccount) {
+  function transferBetweenAccount(
+    amount: number,
+    fromAccount: string,
+    toAccount: string
+  ) {
     const validAccount = Object.keys(balance);
     if (
       validAccount.indexOf(fromAccount) !== -1 &&
@@ -44,6 +48,6 @@ const BankAccount = (function () {
 
 console.log(BankAccount.balance());
 BankAccount.deposit(500);
-BankAccount.transfer(50, "access", "saving");
-BankAccount.transfer(100, "access", "credit");
+BankAccount.transfer(50, 'access', 'saving');
+BankAccount.transfer(100, 'access', 'credit');
 console.log(BankAccount.balance());

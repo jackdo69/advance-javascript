@@ -8,9 +8,13 @@
  * sorted data structure, therefore much easier
  * and faster to search
  */
+import { nodeTreeI } from './interfaces';
 
 class Node {
-  constructor(val) {
+  val: number;
+  left: nodeTreeI;
+  right: nodeTreeI;
+  constructor(val: number) {
     this.val = val;
     this.left = null;
     this.right = null;
@@ -18,16 +22,21 @@ class Node {
 }
 
 class BinarySearchTree {
+  private root: nodeTreeI;
   constructor() {
     this.root = null;
   }
 
-  insert(val) {
+  getRoot() {
+    return this.root;
+  }
+
+  insert(val: number) {
     const newNode = new Node(val);
     if (!this.root) {
       this.root = newNode;
     } else {
-      function travel(val, node) {
+      function travel(val: number, node: nodeTreeI) {
         if (val === node.val) return undefined;
         if (val < node.val) {
           if (node.left) {
@@ -49,7 +58,7 @@ class BinarySearchTree {
     }
   }
 
-  search(val) {
+  search(val: number) {
     switch (true) {
       case !this.root:
         return false;
@@ -80,4 +89,4 @@ tree.insert(14);
 tree.insert(3);
 tree.insert(17);
 
-module.exports = BinarySearchTree;
+export default BinarySearchTree;

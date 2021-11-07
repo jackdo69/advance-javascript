@@ -1,11 +1,17 @@
+import { nodeI } from './interfaces';
 class Node {
-  constructor(val) {
+  val: string | number;
+  next: nodeI;
+  constructor(val: string) {
     this.val = val;
     this.next = null;
   }
 }
 
 class SinglyLinkedList {
+  private head: nodeI;
+  private tail: nodeI;
+  private length: number;
   constructor() {
     this.head = null;
     this.tail = null;
@@ -22,7 +28,7 @@ class SinglyLinkedList {
   }
 
   // push item to the end
-  push(val) {
+  push(val: string) {
     const node = new Node(val);
     if (!this.head) {
       this.head = node;
@@ -39,7 +45,7 @@ class SinglyLinkedList {
   pop() {
     if (!this.head) return undefined;
     let end = this.head;
-    let temp;
+    let temp: nodeI;
     while (end.next) {
       temp = end;
       end = end.next;
@@ -58,7 +64,7 @@ class SinglyLinkedList {
     return result;
   }
 
-  unshift(val) {
+  unshift(val: string) {
     const node = new Node(val);
     if (!this.head) {
       this.head = node;
@@ -72,7 +78,7 @@ class SinglyLinkedList {
     return this;
   }
 
-  get(index) {
+  get(index: number) {
     if (index < 0 || index >= this.length) return null;
     let result = this.head;
     for (let i = 0; i < index; i++) {
@@ -81,14 +87,14 @@ class SinglyLinkedList {
     return result;
   }
 
-  set(index, val) {
+  set(index: number, val: string) {
     let node = this.get(index);
     if (!node) return false;
     node.val = val;
     return true;
   }
 
-  insert(index, val) {
+  insert(index: number, val: string) {
     switch (true) {
       case index < 0 || index > this.length:
         return false;
@@ -110,7 +116,7 @@ class SinglyLinkedList {
     }
   }
 
-  remove(index) {
+  remove(index: number) {
     switch (true) {
       case index < 0 || index > this.length - 1:
         return undefined;
@@ -138,7 +144,7 @@ class SinglyLinkedList {
     this.head = this.tail;
     this.tail = current;
 
-    let next;
+    let next: nodeI;
     let prev = null;
     for (let i = 0; i < this.length; i++) {
       next = current.next;
@@ -157,3 +163,5 @@ list.push('Is');
 list.push('Jack');
 list.reverse();
 list.traverse();
+
+export { Node };

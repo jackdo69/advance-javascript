@@ -7,19 +7,30 @@
  *
  * So in order to implement this, we based strongly on
  * Binary Heap, except that instead of comparing
- * queue, we compare the 'priority'
+ * value, we compare the 'priority'
  * So instead of numbers, we create a node class
  * with 'priority' and 'value' and use 'priority'
  * to compare.
  * We also create a MinBinaryHeap (instead of MaxBinaryHeap like
  * before)
  */
+import { nodePriorityI } from './interfaces';
+
+class Node {
+  val: string;
+  priority: number;
+  constructor(val: string, priority: number) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
 
 class PriorityQueue {
+  values: Array<nodePriorityI>;
   constructor() {
     this.values = [];
   }
-  enqueue(val, priority) {
+  enqueue(val: string, priority: number) {
     let newNode = new Node(val, priority);
     this.values.push(newNode);
     this.bubbleUp();
@@ -52,7 +63,7 @@ class PriorityQueue {
     while (true) {
       let leftChildIdx = 2 * idx + 1;
       let rightChildIdx = 2 * idx + 2;
-      let leftChild, rightChild;
+      let leftChild: nodePriorityI, rightChild: nodePriorityI;
       let swap = null;
 
       if (leftChildIdx < length) {
@@ -78,21 +89,15 @@ class PriorityQueue {
   }
 }
 
-class Node {
-  constructor(val, priority) {
-    this.val = val;
-    this.priority = priority;
-  }
-}
-// const queue = new PriorityQueue();
-// queue.enqueue('Alex', 5);
-// queue.enqueue('James', 1);
-// queue.enqueue('Bella', 4);
-// queue.enqueue('Jessie', 2);
-// queue.enqueue('Tom', 3);
+const queue = new PriorityQueue();
+queue.enqueue('Alex', 5);
+queue.enqueue('James', 1);
+queue.enqueue('Bella', 4);
+queue.enqueue('Jessie', 2);
+queue.enqueue('Tom', 3);
 
-// console.log(queue.dequeue());
-// console.log(queue.dequeue());
-// console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
 
-module.exports = PriorityQueue;
+export default PriorityQueue;

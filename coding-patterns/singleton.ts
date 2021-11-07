@@ -6,7 +6,7 @@
  */
 
 const CorrectSingleton = (function () {
-  let instance;
+  let instance: any;
 
   function init() {
     instance = {};

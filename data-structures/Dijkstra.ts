@@ -2,8 +2,8 @@
  * Dijkstra is an algo helps find the shortest path between 2 vertices
  */
 
-const Graph = require('./graph');
-const PriorityQueue = require('./priority-queue');
+import Graph from './graph';
+import PriorityQueue from './priority-queue';
 
 /**
  * Simple weighted graph, which for the sake
@@ -14,7 +14,7 @@ class WeightedGraph extends Graph {
     super();
   }
 
-  addEdge(i, j, weight) {
+  addEdge(i: string, j: string, weight: number) {
     if (this._keys().indexOf(i) !== -1 && this._keys().indexOf(j) !== -1) {
       this.adjacencyList[i].push({ node: j, weight });
       this.adjacencyList[j].push({ node: i, weight });
@@ -22,14 +22,14 @@ class WeightedGraph extends Graph {
   }
 
   //Dijkstra algorithm
-  Dijkstra(startVertex, endVertex) {
+  Dijkstra(startVertex: string, endVertex: string) {
     //Initial state
     const distances = {};
     const previous = {};
     const nodes = new PriorityQueue();
     let result = [];
 
-    let smallest;
+    let smallest: string;
 
     for (let key in this.adjacencyList) {
       if (key === startVertex) {

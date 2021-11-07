@@ -1,16 +1,16 @@
 // Original
 // Please forgive my dummy accounting formula ^^
 
-function calProfitOriginal(revenue, expenses, tax) {
+function calProfitOriginal(revenue: number, expenses: number, tax: number) {
   const grossProfit = revenue - expenses;
   const netProfit = grossProfit - grossProfit * tax;
   return netProfit;
 }
 
 // Currying using the 'closure' of javascript
-function calProfitCurry(revenue) {
-  return function (expenses) {
-    return function (tax) {
+function calProfitCurry(revenue: number) {
+  return function (expenses: number) {
+    return function (tax: number) {
       const grossProfit = revenue - expenses;
       const netProfit = grossProfit - grossProfit * tax;
       return netProfit;
@@ -18,19 +18,20 @@ function calProfitCurry(revenue) {
   };
 }
 
-const calProfitArrow = (revenue) => (expenses) => (tax) => {
-  const grossProfit = revenue - expenses;
-  const netProfit = grossProfit - grossProfit * tax;
-  return netProfit;
-};
+const calProfitArrow =
+  (revenue: number) => (expenses: number) => (tax: number) => {
+    const grossProfit = revenue - expenses;
+    const netProfit = grossProfit - grossProfit * tax;
+    return netProfit;
+  };
 
 // Assuming we made 1000, our expenses is 300, tax is 10%
 
-const origin = calProfitOriginal(1000, 300, 0.1);
+const normal = calProfitOriginal(1000, 300, 0.1);
 const curry = calProfitCurry(1000)(300)(0.1);
 const arrow = calProfitArrow(1000)(300)(0.1);
 
-console.log(origin);
+console.log(normal);
 console.log(curry);
 console.log(arrow);
 

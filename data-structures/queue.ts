@@ -1,42 +1,48 @@
+import { nodeI } from './interfaces';
 class Node {
-  constructor(val) {
+  val: number;
+  next: nodeI;
+  constructor(val: number) {
     this.val = val;
     this.next = null;
   }
 }
 
-class Stack {
+class Queue {
+  start: nodeI;
+  end: nodeI;
+  size: number;
   constructor() {
     this.start = null;
     this.end = null;
     this.size = 0;
   }
 
-  push(val) {
+  enqueue(val: number) {
     const node = new Node(val);
     if (this.size === 0) {
       this.start = node;
       this.end = node;
     } else {
-      let temp = this.start;
-      this.start = node;
-      this.start.next = temp;
+      this.end.next = node;
+      this.end = node;
     }
     return ++this.size;
   }
 
-  pop() {
+  dequeue() {
     if (this.size === 0) return null;
-    const node = this.start;
+    const first = this.start;
     if (this.size === 1) {
       this.start = null;
       this.end = null;
     } else {
-      const newStart = node.next;
-      this.start = newStart;
-      node.next = null;
+      this.start = first.next;
     }
     this.size--;
-    return node.val;
+    first.next = null;
+    return first.val;
   }
 }
+
+export default {};

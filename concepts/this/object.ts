@@ -32,17 +32,18 @@ bob.showWindow();
  */
 
 /** create object using constructor function */
-function Animal(type) {
+function Animal(type: string) {
   this.type = type;
   console.log('This inside Animal when call new', this);
 }
-const abe = new Animal(); //this refered to object created by Animal()
-Animal(); // this referred back to the Window object
+const abe = new Animal('monkey'); //this refered to object created by Animal()
+Animal('cat'); // this referred back to the Window object
 
 /** create object using class */
 
 class Bird {
-  constructor(type) {
+  private type: string;
+  constructor(type: string) {
     this.type = type;
   }
 }

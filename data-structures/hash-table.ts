@@ -35,12 +35,13 @@
  */
 
 class HashTable {
+  private PRIME = 31;
+  keyMap: Array<Array<[key: string, value: string]>>;
   constructor(size = 257) {
-    this.PRIME = 31;
     this.keyMap = new Array(size);
   }
 
-  hash(key) {
+  hash(key: string): number {
     let total = 0;
     //In order to make sure the hash will run with constant
     //time, we will limit the number of string of key
@@ -56,10 +57,12 @@ class HashTable {
   }
 
   static removeDuplicate(arr) {
-    return arr.filter((item, index) => arr.indexOf(item) === index);
+    return arr.filter(
+      (item: string, index: number) => arr.indexOf(item) === index
+    );
   }
 
-  set(key, value) {
+  set(key: string, value: string) {
     const hashedKey = this.hash(key);
     if (this.keyMap[hashedKey]) {
       this.keyMap[hashedKey].push([key, value]);

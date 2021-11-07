@@ -6,7 +6,9 @@
  * BinarySearchTree class we created
  */
 
-const BinarySearchTree = require('./binary-search-tree');
+// const BinarySearchTree = require('./binary-search-tree');
+import BinarySearchTree from './binary-search-tree';
+import { nodeTreeI } from './interfaces';
 
 const tree = new BinarySearchTree();
 tree.insert(97);
@@ -33,7 +35,7 @@ tree.insert(92);
 //   /           /     \       /     \
 // 51          90       92   110       178
 
-function breadFirstSearch(root) {
+function breadFirstSearch(root: nodeTreeI) {
   const queue = [];
   const results = [];
   queue.push(root);
@@ -46,7 +48,7 @@ function breadFirstSearch(root) {
   return results;
 }
 
-function depthFirstPreOrder(root) {
+function depthFirstPreOrder(root: nodeTreeI) {
   const valuesVisited = [];
   function helper(node) {
     valuesVisited.push(node.val);
@@ -57,7 +59,7 @@ function depthFirstPreOrder(root) {
   return valuesVisited;
 }
 
-function depthFirstPostOrder(root) {
+function depthFirstPostOrder(root: nodeTreeI) {
   const valuesVisited = [];
   function helper(node) {
     if (node.left) helper(node.left);
@@ -68,7 +70,7 @@ function depthFirstPostOrder(root) {
   return valuesVisited;
 }
 
-function depthFirstInOrder(root) {
+function depthFirstInOrder(root: nodeTreeI) {
   const valuesVisited = [];
   function helper(node) {
     if (node.left) helper(node.left);
@@ -79,4 +81,4 @@ function depthFirstInOrder(root) {
   return valuesVisited;
 }
 
-console.log(depthFirstPostOrder(tree.root));
+console.log(depthFirstPostOrder(tree.getRoot()));

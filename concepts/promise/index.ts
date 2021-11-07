@@ -13,7 +13,7 @@
 /**
  * simple sleep() function that when we place in async block will hold the execution of code
  */
-const sleep = (ms) =>
+const sleep = (ms: number) =>
   new Promise((resolve, reject) => {
     setTimeout(resolve, ms);
   });
@@ -23,7 +23,7 @@ const sleep = (ms) =>
 })();
 
 // we can achieve the above effect in normal code flow without putting inside async block
-function delay(ms) {
+function delay(ms: number) {
   const start = new Date().getTime();
   while (new Date().getTime() < start + ms) {}
 }
@@ -51,7 +51,7 @@ delay(3000);
  */
 
 const thenPromise = new Promise((resolve, reject) => {
-  resolve("Success");
+  resolve('Success');
   //or
   //reject('Error')
 });
@@ -60,7 +60,7 @@ thenPromise
   .then(
     (val) => {
       console.log(val); // Success
-      return "hello";
+      return 'hello';
     },
     (reason) => {
       console.log(reason); // Error
@@ -72,3 +72,5 @@ thenPromise
   .catch((e) => {
     console.log(e); //Error
   });
+
+export = delay;

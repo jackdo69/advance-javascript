@@ -24,13 +24,14 @@
  */
 
 class MaxBinaryHeap {
+  values: Array<number>;
   constructor() {
     this.values = [];
   }
   print() {
     console.log(this.values);
   }
-  swap(i, j) {
+  swap(i: number, j: number) {
     let temp = this.values[i];
     this.values[i] = this.values[j];
     this.values[j] = temp;
@@ -38,7 +39,7 @@ class MaxBinaryHeap {
 
   //Given a value and an index, it will keep moving up until
   //that value stand in correct spot
-  bubleUp(val, index) {
+  bubleUp(val: number, index: number) {
     let parentIndex = Math.floor((index - 1) / 2);
     if (this.values[parentIndex] < this.values[index]) {
       if (parentIndex <= 0) {
@@ -53,7 +54,7 @@ class MaxBinaryHeap {
 
   //given a value and an index, it will keep moving down
   //until that value stand in the right spot
-  sinkDown(val, index) {
+  sinkDown(val: number, index: number) {
     let leftChildIndex = 2 * index + 1;
     let rightChildIndex = 2 * index + 2;
     if (leftChildIndex > this.values.length - 1) return;
@@ -86,7 +87,7 @@ class MaxBinaryHeap {
     }
   }
 
-  insert(value) {
+  insert(value: number) {
     if (this.values.indexOf(value) !== -1) return;
     this.values.push(value);
     let index = this.values.length - 1;
@@ -114,3 +115,5 @@ heap.removeRoot();
 heap.removeRoot();
 
 heap.print();
+
+export default {};

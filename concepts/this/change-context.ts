@@ -9,17 +9,17 @@
  */
 
 const alex = {
-  name: "Alex",
+  name: 'Alex',
   getName: function () {
     return this.name;
   },
 };
 const unbound = alex.getName;
-const laura = {
-  name: "Laura",
+const laura1 = {
+  name: 'Laura',
 };
 
-const bound = unbound.bind(laura);
+const bound = unbound.bind(laura1);
 console.log(bound());
 
 /**
@@ -43,14 +43,14 @@ console.log(arr1);
  * 3. Call
  */
 
-function Person(name, age) {
+function Person(name: string, age: number) {
   this.name = name;
   this.age = age;
 }
 
-function Student(name) {
+function Student(name: string) {
   Person.call(this, name, 5);
 }
 
-const jack = new Student("jack");
+const jack = new Student('jack');
 console.log(jack);

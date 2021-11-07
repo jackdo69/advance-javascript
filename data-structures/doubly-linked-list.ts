@@ -1,12 +1,19 @@
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
+import { Node } from './singly-linked-list';
+import { doubleNodeI } from './interfaces';
+class DoubleNode extends Node {
+  next: doubleNodeI;
+  prev?: doubleNodeI;
+  constructor(val: string) {
+    super(val);
     this.prev = null;
   }
 }
 
 class DoublyLinkedList {
+  private head: doubleNodeI;
+  private tail: doubleNodeI;
+  private length: number;
+
   constructor() {
     this.head = null;
     this.tail = null;
@@ -22,8 +29,8 @@ class DoublyLinkedList {
     }
   }
 
-  push(val) {
-    let node = new Node(val);
+  push(val: string) {
+    let node = new DoubleNode(val);
     if (!this.head) {
       this.head = node;
       this.tail = node;
@@ -66,8 +73,8 @@ class DoublyLinkedList {
     return oldHead;
   }
 
-  unshift(val) {
-    const node = new Node(val);
+  unshift(val: string) {
+    const node = new DoubleNode(val);
     if (this.length === 0) {
       this.head = node;
       this.tail = node;
@@ -80,10 +87,10 @@ class DoublyLinkedList {
     return this;
   }
 
-  get(index) {
-    if (index < 0 || index > this.lengh - 1) return null;
+  get(index: number) {
+    if (index < 0 || index > this.length - 1) return null;
     const middle = Math.floor(this.length / 2);
-    let result;
+    let result: DoubleNode;
     if (index <= middle) {
       result = this.head;
       for (let i = 0; i < index; i++) {
@@ -98,7 +105,7 @@ class DoublyLinkedList {
     return result;
   }
 
-  set(index, val) {
+  set(index: number, val: string) {
     const node = this.get(index);
     if (node) {
       node.val = val;
@@ -108,7 +115,7 @@ class DoublyLinkedList {
     }
   }
 
-  insert(index, val) {
+  insert(index: number, val: string) {
     switch (true) {
       case index < 0 || index >= this.length:
         return false;
@@ -123,7 +130,7 @@ class DoublyLinkedList {
       default:
         const before = this.get(index - 1);
         const after = before.next;
-        const node = new Node(val);
+        const node = new DoubleNode(val);
         before.next = node;
         after.prev = node;
         node.prev = before;
@@ -133,7 +140,7 @@ class DoublyLinkedList {
     }
   }
 
-  remove(index) {
+  remove(index: number) {
     switch (true) {
       case index < 0 || index >= this.length:
         return undefined;

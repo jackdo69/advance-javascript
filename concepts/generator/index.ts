@@ -1,11 +1,11 @@
-function* query(n) {
+function* query(n: number) {
   while (n <= 10) {
     yield n;
     n++;
   }
 }
 
-function printTo10(num) {
+function printTo10(num: number) {
   const result = query(num);
   let finish = false;
   while (!finish) {

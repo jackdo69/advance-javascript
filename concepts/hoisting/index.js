@@ -7,7 +7,7 @@
  */
 
 function fn() {
-  var name = "alex";
+  var name = 'alex';
   console.log(name);
   var age = 12;
   console.log(age);
@@ -16,17 +16,17 @@ function fn() {
 function fn() {
   var name;
   var age;
-  name = "alex";
+  name = 'alex';
   console.log(name);
   age = 12;
   console.log(age);
 }
 
 // when we do
-var foo = "hello";
+let foo = 'hello';
 // javascript always do
 var foo;
-foo = "hello";
+foo = 'hello';
 
 /**
  * 2. variables are not existed until we declare them
@@ -48,13 +48,13 @@ console.log(a); // 20
 f1(); // Function f1 is called
 
 function f1() {
-  console.log("Function f1 is called");
+  console.log('Function f1 is called');
 }
 
 // f2(); // TypeError f2 is not a function
 
 f2 = function () {
-  console.log("Function f2 is called");
+  console.log('Function f2 is called');
 };
 
 /**
@@ -63,7 +63,7 @@ f2 = function () {
  */
 
 console.log(name1); // undefined
-var name1 = "july";
+var name1 = 'july';
 
 // console.log(name2); // ReferenceError: name2 is not defined
-let name2 = "beth";
+let name2 = 'beth';
