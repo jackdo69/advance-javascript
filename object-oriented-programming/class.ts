@@ -1,14 +1,16 @@
 class Computer1 {
-  constructor(OS) {
+  private OS: string;
+  turnOff: () => void;
+  constructor(OS: string) {
     this.OS = OS;
 
     this.turnOff = function () {
-      console.log(".. turning off the machine..");
+      console.log('.. turning off the machine..');
     };
   }
 
   turnOn() {
-    console.log("..turning the machine on...");
+    console.log('..turning the machine on...');
   }
 }
 
@@ -16,19 +18,19 @@ class Computer1 {
  * the above is exactly the same as
  */
 
-function Computer2(OS) {
+function Computer2(OS: string) {
   this.OS = OS;
   this.turnOff = function () {
-    console.log(".. turning off the machine..");
+    console.log('.. turning off the machine..');
   };
 }
 Computer2.prototype.turnOn = function () {
-  console.log("..turning the machine on...");
+  console.log('..turning the machine on...');
 };
 
-const jackpc = new Computer1("window");
+const jackpc = new Computer1('window');
 console.log(jackpc);
-const jillpc = new Computer2("window");
+const jillpc = new Computer2('window');
 console.log(jillpc);
 /**
  * Notice that the constructor() function in class is very similar

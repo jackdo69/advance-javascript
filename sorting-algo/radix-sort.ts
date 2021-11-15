@@ -17,7 +17,7 @@
  */
 const data = require('./data.json');
 
-function getDigit(num, pos) {
+function getDigit(num: number, pos: number) {
   return (
     ((Math.abs(num) % Math.pow(10, pos)) -
       (Math.abs(num) % Math.pow(10, pos - 1))) /
@@ -25,12 +25,12 @@ function getDigit(num, pos) {
   );
 }
 
-function countDigit(num) {
+function countDigit(num: number) {
   if (num === 0) return 1;
   return Math.floor(Math.log10(Math.abs(num))) + 1;
 }
 
-function mostDigit(arr) {
+function mostDigit(arr: number[]) {
   let mostDigit = 0;
   for (let i = 0; i < arr.length; i++) {
     mostDigit = Math.max(mostDigit, countDigit(arr[i]));
@@ -38,7 +38,7 @@ function mostDigit(arr) {
   return mostDigit;
 }
 
-function radixSort(arr) {
+function radixSort(arr: number[]) {
   //get most digit to determine the number of loop time
   let times = mostDigit(arr);
 
@@ -58,3 +58,5 @@ function radixSort(arr) {
 }
 
 console.log(radixSort(data));
+
+export default {};

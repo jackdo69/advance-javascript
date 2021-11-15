@@ -57,3 +57,5 @@ class Data {
     dataProcessor.save();
   }
 }
+
+export default {};

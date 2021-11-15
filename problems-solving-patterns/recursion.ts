@@ -2,7 +2,7 @@
 // power(2,2) // 4
 // power(2,4) // 16
 
-function power(base, exp) {
+function power(base: number, exp: number) {
   if (exp == 0) return 1;
   return base * power(base, (exp -= 1));
 }
@@ -12,7 +12,7 @@ function power(base, exp) {
 // factorial(4) // 24
 // factorial(7) // 5040
 
-function factorial(num) {
+function factorial(num: number) {
   if (num === 1) return 1;
   return num * factorial(num - 1);
 }
@@ -20,10 +20,10 @@ function factorial(num) {
 // productOfArray([1,2,3]) // 6
 // productOfArray([1,2,3,10]) // 60
 
-function productOfArray(arr) {
+function productOfArray(arr: number[]) {
   let result = 1;
 
-  function helper(array) {
+  function helper(array: number[]) {
     if (array.length === 0) return;
     result = result * array[0];
     return helper(array.slice(1));
@@ -35,9 +35,9 @@ function productOfArray(arr) {
 // recursiveRange(6) // 21
 // recursiveRange(10) // 55
 
-function recursiveRange(num) {
+function recursiveRange(num: number) {
   let result = 0;
-  function helper(input) {
+  function helper(input: number) {
     if (input === 0) return;
     result += input;
     return helper((input -= 1));
@@ -52,10 +52,10 @@ function recursiveRange(num) {
 // fib(28) // 317811
 // fib(35) // 9227465
 
-function fib(num) {
+function fib(num: number) {
   let arr = [1, 1];
   let index = 2;
-  function build(value) {
+  function build(value: number) {
     let nextVal = arr[index - 2] + arr[index - 1];
     arr.push(nextVal);
     index++;

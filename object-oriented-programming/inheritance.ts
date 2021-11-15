@@ -5,37 +5,40 @@
 //1. Using class
 // Please note the use of 'super' which means recall the superclass
 class HumanC {
-  constructor(name) {
+  protected name: string;
+  eat: () => void;
+  constructor(name: string) {
     this.name = name;
     this.eat = function () {
       //this function will appear in the instance
-      console.log("..eating..");
+      console.log('..eating..');
     };
   }
 
   sleep() {
     //this function will appear in the '__proto__' field
-    console.log("..sleeping..");
+    console.log('..sleeping..');
   }
 }
 
 class TeacherC extends HumanC {
-  constructor(name, subject) {
+  private subject: string;
+  constructor(name: string, subject: string) {
     super(name);
     this.subject = subject;
   }
 
   teach() {
-    console.log("..teaching..");
+    console.log('..teaching..');
   }
 
   sleep() {
     //by doing this, we have 'sleep' function in '__proto__' and also the original in the inner '__proto__'
     super.sleep();
-    console.log("..teacher too tired...");
+    console.log('..teacher too tired...');
   }
 }
-const laura = new TeacherC("Laura", "maths");
+const laura = new TeacherC('Laura', 'maths');
 console.log(laura);
 /**
  * in 'laura' object, there is '__proto__' field, which is the prototype of Teacher
@@ -47,14 +50,14 @@ laura.sleep();
 
 const humanConstructor = {
   eat() {
-    console.log("..eating..");
+    console.log('..eating..');
   },
   sleep() {
-    console.log("..sleeping..");
+    console.log('..sleeping..');
   },
 };
 
-function HumanF(name) {
+function HumanF(name: string) {
   const obj = Object.create(humanConstructor);
   obj.name = name;
   return obj;
@@ -62,7 +65,7 @@ function HumanF(name) {
 
 const teacherConstructor = {
   teach() {
-    console.log("..teaching..");
+    console.log('..teaching..');
   },
   //   sleep() {
   //     humanConstructor.sleep();
@@ -70,14 +73,14 @@ const teacherConstructor = {
   //   },
 };
 
-function TeacherF(name, subject) {
+function TeacherF(name: string, subject: string) {
   const obj = HumanF(name);
   obj.subject = subject;
   Object.setPrototypeOf(obj, teacherConstructor);
   return obj;
 }
 
-const ben = TeacherF("Ben", "physics");
+const ben = TeacherF('Ben', 'physics');
 console.log(ben);
 ben.teach();
 //Up to this point, even 'ben' was created from 'HumanF', ben still not able to 'sleep()'

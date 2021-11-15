@@ -4,10 +4,10 @@
  * to the end (or beginning)
  * Time complexity: O(n2)
  */
-const swapArrayItem = require('./swap');
+import swapArrayItem from './swap';
 const data = require('./data.json');
 
-function sort(arr) {
+function sort(arr: number[]) {
   let end = arr.length - 1;
   let notFinish = true;
   /**
@@ -31,3 +31,5 @@ function sort(arr) {
 
 const result = sort(data);
 console.log(result);
+
+export default {};

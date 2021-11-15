@@ -72,3 +72,5 @@ laura.send('Hi John', john);
 kate.send("Let's go out tonight", tom);
 chatroom.unregister(kate);
 chatroom.showParticipants();
+
+export default {};

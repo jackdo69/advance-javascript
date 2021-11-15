@@ -4,7 +4,9 @@
  */
 
 class Rectangle {
-  constructor(width, height) {
+  private _width: number;
+  private _height: number;
+  constructor(width: number, height: number) {
     this._width = width;
     this._height = height;
   }
@@ -29,6 +31,7 @@ class Rectangle {
   }
 }
 
+//incorrect
 class SquareI extends Rectangle {
   constructor(size) {
     super(size, size);
@@ -39,11 +42,13 @@ console.log(foo.getArea()); // 25
 foo.width = 3;
 console.log(foo.getArea()); // 15 because the height is 5
 
+//correct
 class SquareC extends Rectangle {
-  constructor(size) {
+  private _size: number;
+  constructor(size: number) {
     super(size, size);
   }
-  set size(val) {
+  set size(val: number) {
     super.width = val;
     super.height = val;
   }
@@ -52,3 +57,5 @@ class SquareC extends Rectangle {
 const baz = new SquareC(5);
 baz.size = 3;
 console.log(baz.getArea()); // 9
+
+export default {};

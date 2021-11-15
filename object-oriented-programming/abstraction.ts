@@ -10,21 +10,20 @@
  *
  */
 
-/**
- * Typescript version
+// Typescript version
 abstract class Person {
   protected name: string;
   protected work: string;
-  constructor (name: string, work: string) {
+  constructor(name: string, work: string) {
     this.name = name;
     this.work = work;
-  };
+  }
 
   sleep() {
     console.log('...sleeping..');
   }
 
-  abstract working() : void;
+  abstract working(): void;
 }
 
 class Student extends Person {
@@ -35,10 +34,13 @@ class Student extends Person {
   }
 
   working() {
-    console.log(`I am working as ${this.work}`)
+    console.log(`I am working as ${this.work}`);
   }
 }
- */
+
+const sam = new Student('Same', '1st year', 13);
+sam.sleep();
+sam.working();
 
 /**The Student class MUST implement the working() {} method, and class Person
  * is marked as abstract class, so NO new instance can be initiated from it
@@ -50,22 +52,25 @@ class Student extends Person {
  * the code above be compiled to
  */
 
-"use strict";
-class Person {
-  constructor(name, work) {
-    this.name = name;
-    this.work = work;
-  }
-  sleep() {
-    console.log("...sleeping..");
-  }
-}
-class Student extends Person {
-  constructor(name, work, age) {
-    super(name, work);
-    this.age = age;
-  }
-  working() {
-    console.log(`I am working as ${this.work}`);
-  }
-}
+// "use strict";
+// class Person {
+
+//   constructor(name, work) {
+//     this.name = name;
+//     this.work = work;
+//   }
+//   sleep() {
+//     console.log("...sleeping..");
+//   }
+// }
+// class Student extends Person {
+//   constructor(name, work, age) {
+//     super(name, work);
+//     this.age = age;
+//   }
+//   working() {
+//     console.log(`I am working as ${this.work}`);
+//   }
+// }
+
+export default {};

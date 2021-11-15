@@ -1,8 +1,8 @@
 /**
  * Open for extension but close for update
  */
-
-const grades = {
+type gradesT = { [key: string]: Array<number> };
+const grades: gradesT = {
   Mathematics: [],
   Physics: [],
   Biology: [],
@@ -10,25 +10,25 @@ const grades = {
 
 // No.....
 
-function addMathsGrade(grade) {
+function addMathsGrade(grade: number) {
   grades.Mathematics.push(grade);
 }
 
-function addPhysicsGrade(grade) {
+function addPhysicsGrade(grade: number) {
   grades.Physics.push(grade);
 }
 
 // No.....
 
-function addGrade(subject, grade) {
+function addGrade(subject: keyof gradesT, grade: number) {
   switch (subject) {
-    case "Mathematics":
+    case 'Mathematics':
       grades.Mathematics.push(grade);
       break;
-    case "Physics":
+    case 'Physics':
       grades.Physics.push(grade);
       break;
-    case "Biology":
+    case 'Biology':
       grades.Biology.push(grade);
       break;
   }
@@ -37,9 +37,7 @@ function addGrade(subject, grade) {
 // We should write addGrade() function dynamically
 // By doing this, even more subjects are added in grades, we still don't need to upgrade this function
 
-function addGradeCorrect(subject, grade) {
+function addGradeCorrect(subject: keyof gradesT, grade: number) {
   const subjects = Object.keys(grades);
-  if (subjects.indexOf(subject) !== -1) {
-    grades[subject].push(grade);
-  }
+  grades[subject].push(grade);
 }

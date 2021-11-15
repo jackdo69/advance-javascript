@@ -1,6 +1,8 @@
-function compare(arr1, arr2) {
-  let frequency1 = {};
-  let frequency2 = {};
+type inputT = Array<number>;
+type frequenceT = { [key: number]: number };
+function compare(arr1: inputT, arr2: inputT) {
+  let frequency1: frequenceT = {};
+  let frequency2: frequenceT = {};
 
   if (arr1.length !== arr2.length) {
     return false;
@@ -16,10 +18,11 @@ function compare(arr1, arr2) {
   }
   console.log(frequency2);
 
-  for (let k in frequency1) {
-    if (!(k ** 2) in frequency2) return false;
-    if (frequency1[k] !== frequency2[k ** 2]) return false;
-  }
+  Object.keys(frequency1).forEach((k) => {
+    let key = parseInt(k);
+    if (!(key ** 2 in frequency2)) return false;
+    if (frequency1[key] !== frequency2[key ** 2]) return false;
+  });
   return true;
 }
 
@@ -33,3 +36,5 @@ console.log(compare(arr1, arr2)); // => true
  * Space Complexity: O(1)
  * Time complexity: O(n)
  */
+
+export default {};

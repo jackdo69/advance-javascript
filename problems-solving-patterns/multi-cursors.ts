@@ -1,4 +1,4 @@
-function countUniqueValues(arr) {
+function countUniqueValues(arr: number[]) {
   // add whatever parameters you deem necessary - good luck!
   let i = 0;
   let j = 1;

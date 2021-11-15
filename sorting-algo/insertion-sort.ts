@@ -9,7 +9,7 @@ const data = require('./data.json');
  * but rather a "Shift and Insert" kinda way
  */
 
-function sort(arr) {
+function sort(arr: number[]) {
   for (let i = 0; i < arr.length; i++) {
     let currentVal = arr[i + 1]; // this is the value we need to insert
     for (let j = i + 1; j > -1; j--) {

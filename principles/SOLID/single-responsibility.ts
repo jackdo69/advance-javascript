@@ -12,13 +12,15 @@ class User {
     // write new user to DB
   }
 
-  update() {
+  update(req: string) {
     // update user to DB
-    const updatePicture = function () {
-      // load picture from request
-      // save it to storage
-      // update picture link
-    };
+    // load picture from request
+    // save it to storage
+    // update picture link
+    // only update Url
+    const pictureHandler = new Picture();
+    const url = pictureHandler.loadPicture(req);
+    // update the url
   }
   delete() {
     // delete user from DB
@@ -30,19 +32,11 @@ class User {
  * we can load picture and save to storage in another module
  */
 class Picture {
-  loadPicture(req) {
+  loadPicture(req: string) {
     // load picture from request
     //return the new URL
+    return;
   }
 }
 
-class User {
-  read() {}
-  create() {}
-  update() {
-    // only update Url
-    const pictureHandler = new Picture();
-    const url = pictureHandler.loadPicture(req);
-    // update the url
-  }
-}
+export default {};

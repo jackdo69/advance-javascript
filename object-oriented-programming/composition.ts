@@ -16,29 +16,32 @@
 
 const skills = {
   code() {
-    console.log("..coding..");
+    console.log('..coding..');
   },
   design() {
-    console.log("..designing..");
+    console.log('..designing..');
   },
   deploy() {
-    console.log("..deploying..");
+    console.log('..deploying..');
   },
   maintain() {
-    console.log("..maintaining..");
+    console.log('..maintaining..');
   },
 };
 class Human {
-  constructor(name) {
+  protected name: string;
+  constructor(name: string) {
     this.name = name;
   }
   sleep() {
-    console.log("..sleeping..");
+    console.log('..sleeping..');
   }
 }
 
 class Developer extends Human {
-  constructor(name) {
+  code: () => void;
+  design: () => void;
+  constructor(name: string) {
     super(name);
     //Assign the skills to the instance
     Object.assign(this, {
@@ -49,7 +52,9 @@ class Developer extends Human {
 }
 
 class SystemAdmin extends Human {
-  constructor(name) {
+  deploy: () => void;
+  maintain: () => void;
+  constructor(name: string) {
     super(name);
   }
 }
@@ -61,7 +66,10 @@ Object.assign(SystemAdmin.prototype, {
 });
 
 class DevOps extends Human {
-  constructor(name) {
+  code: () => void;
+  deploy: () => void;
+  maintain: () => void;
+  constructor(name: string) {
     super(name);
     Object.assign(this, {
       code: skills.code,
@@ -71,9 +79,11 @@ class DevOps extends Human {
   }
 }
 
-const benDev = new Developer("Ben");
-const jacobSystemAdmin = new SystemAdmin("Jacob");
-const lauraDevOps = new DevOps("Laura");
+const benDev = new Developer('Ben');
+const jacobSystemAdmin = new SystemAdmin('Jacob');
+const lauraDevOps = new DevOps('Laura');
 benDev.code();
 jacobSystemAdmin.deploy();
 lauraDevOps.maintain();
+
+export default {};

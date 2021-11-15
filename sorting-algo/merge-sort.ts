@@ -13,7 +13,7 @@
 
 const data = require('./data.json');
 
-function mergeSortedArray(arr1, arr2) {
+function mergeSortedArray(arr1: number[], arr2: number[]) {
   let result = [];
   let i = 0;
   let j = 0;
@@ -38,7 +38,7 @@ function mergeSortedArray(arr1, arr2) {
   return result;
 }
 
-function mergeSort(arr) {
+function mergeSort(arr: number[]) {
   if (arr.length === 1) return arr;
   let middle = Math.floor(arr.length / 2);
   let first = arr.slice(0, middle);
@@ -47,3 +47,5 @@ function mergeSort(arr) {
 }
 
 console.log(mergeSort(data));
+
+export default {};

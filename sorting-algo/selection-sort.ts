@@ -1,4 +1,4 @@
-const swapArrayItem = require('./swap');
+import swapArrayItem from './swap';
 const data = require('./data.json');
 /**
  * Instead of keep swapping to move the
@@ -10,7 +10,7 @@ const data = require('./data.json');
  * Time complexity: O(n2)
  */
 
-function sort(arr) {
+function sort(arr: number[]) {
   for (let i = 0; i < arr.length; i++) {
     let pointer = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -27,3 +27,5 @@ function sort(arr) {
 
 const result = sort(data);
 console.log(result);
+
+export default {};

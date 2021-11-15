@@ -8,22 +8,22 @@
  */
 
 class BankAccount {
-  #amount = 0;
-  constructor(amount) {
-    this.#amount = amount;
+  private _amount: number;
+  constructor(amount: number) {
+    this._amount = amount;
   }
 
-  deposit(...args) {
+  deposit(...args: Array<number>) {
     if (args.length === 2) {
       let money = args[0] * args[1];
-      this.#amount += money;
+      this._amount += money;
     } else {
-      this.#amount += args[0];
+      this._amount += args[0];
     }
   }
 
   getAmount() {
-    console.log(this.#amount);
+    console.log(this._amount);
   }
 }
 
@@ -35,21 +35,21 @@ account.getAmount();
 /**Polymorphism in inheritance */
 class Person {
   introduce() {
-    console.log("Hello, I am a person");
+    console.log('Hello, I am a person');
   }
 }
 
 class Developer extends Person {
   introduce() {
     super.introduce();
-    console.log("I can code too");
+    console.log('I can code too');
   }
 }
 
 class Designer extends Person {
   introduce() {
     super.introduce();
-    console.log("I can design cool things also");
+    console.log('I can design cool things also');
   }
 }
 
@@ -59,3 +59,5 @@ const designer = new Designer();
 person.introduce();
 dev.introduce();
 designer.introduce();
+
+export default {};

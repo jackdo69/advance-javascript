@@ -10,10 +10,10 @@
  * Time complexity: O(nlogn)
  */
 
-const swap = require('./swap');
+import swap from './swap';
 const data = require('./data.json');
 
-function findPivot(arr, start, end) {
+function findPivot(arr: number[], start: number, end: number) {
   // This function will move the 1st element of the array to the correct index
   // then return that index
   let count = start;
@@ -28,7 +28,7 @@ function findPivot(arr, start, end) {
   return count;
 }
 
-function quickSort(arr, start = 0, end = arr.length - 1) {
+function quickSort(arr: number[], start = 0, end = arr.length - 1) {
   if (start < end) {
     let pivot = findPivot(arr, start, end);
     if (start < pivot) quickSort(arr, start, pivot - 1);
@@ -39,3 +39,5 @@ function quickSort(arr, start = 0, end = arr.length - 1) {
 
 console.log(data);
 console.log(quickSort(data));
+
+export default {};

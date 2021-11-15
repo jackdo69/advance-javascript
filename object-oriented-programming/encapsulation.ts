@@ -14,46 +14,47 @@
  * than in class, but we will look at both
  */
 
+type genderT = 'male' | 'female';
 // 1. Let's try with class
 class HumanC {
-  #gender;
-  constructor(gender) {
-    this.#gender = gender;
+  protected _gender;
+  constructor(gender: genderT) {
+    this._gender = gender;
   }
 
   getGender() {
-    return this.#gender;
+    return this._gender;
   }
 
-  setGender(g) {
-    if (g === "male" || g === "female") {
-      this.#gender = g;
-    }
+  setGender(g: genderT) {
+    this._gender = g;
   }
 }
 
-const james = new HumanC("male");
+const james = new HumanC('male');
 // console.log(james.#gender); // Private field must be declared in an enclosing tag
 console.log(james);
 console.log(james.getGender());
-james.setGender("female");
+james.setGender('female');
 console.log(james.getGender());
 
-function HumanF(gender) {
+function HumanF(gender: genderT) {
   this.gender = gender;
   this.getGender = function () {
     return this.gender;
   };
   this.setGender = function (g) {
-    if (g === "male" || g === "female") {
+    if (g === 'male' || g === 'female') {
       this.gender = g;
     }
   };
 }
 
-const anna = new HumanF("female");
+const anna = new HumanF('female');
 console.log(anna);
 console.log(anna.gender); // undefined
 console.log(anna.getGender());
-anna.setGender("male");
+anna.setGender('male');
 console.log(anna.getGender());
+
+export default {};
